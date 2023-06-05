@@ -2,9 +2,10 @@
   "name": "transducer-js",
   "version": "1.0.0",
   "description": "A simple transducer library",
-  "main": "dist/webpack-numbers.js",
+  "main": "dist/transducer.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:prod": "npx webpack --mode production",
+    "build:dev": "npx webpack --mode development"
   },
   "repository": {
     "type": "git",
