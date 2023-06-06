@@ -1,13 +1,12 @@
 {
-  "name": "transducer-js",
-  "version": "1.0.0",
+  "name": "@catalin.cheptea/transducer-js",
+  "version": "1.0.1",
   "description": "A simple transducer library",
   "main": "dist/transducer.js",
   "scripts": {
     "build:prod": "npx webpack --mode production",
     "build:dev": "npx webpack --mode development",
-    "test": "npx jest",
-    "publish": "npm run test && npm publish"
+    "test": "npx jest"
   },
   "repository": {
     "type": "git",
