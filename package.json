@@ -1,8 +1,8 @@
 {
   "name": "@catalin.cheptea/transducer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple transducer library",
-  "main": "dist/transducer.js",
+  "main": "dist",
   "scripts": {
     "build:prod": "npx webpack --mode production",
     "build:dev": "npx webpack --mode development",
