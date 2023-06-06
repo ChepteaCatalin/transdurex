@@ -6,7 +6,8 @@
   "scripts": {
     "build:prod": "npx webpack --mode production",
     "build:dev": "npx webpack --mode development",
-    "test": "npx jest"
+    "test": "npx jest",
+    "publish": "npm run test && npm publish"
   },
   "repository": {
     "type": "git",
@@ -16,7 +17,7 @@
     "transducer"
   ],
   "author": "ChepteaCatalin",
-  "license": "MIT",
+  "license": "WTFPL",
   "bugs": {
     "url": "https://github.com/ChepteaCatalin/transducer-js/issues"
   },
