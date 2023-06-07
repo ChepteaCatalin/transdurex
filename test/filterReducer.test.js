@@ -7,7 +7,7 @@ describe("filterReducer", () => {
     expect(typeof reducer).toBe("function");
   });
 
-  test("should correctly apply the filtering and combine function", () => {
+  test("should correctly apply the filtering and combine functions", () => {
     var isEven = (x) => !(x % 2);
     var sumCombiner = (acc, curr) => acc + curr;
 

@@ -1,6 +1,6 @@
 {
   "name": "@catalin.cheptea/transducer",
-  "version": "1.0.7",
+  "version": "1.0.0",
   "description": "A simple transducer library",
   "main": "dist/transducer.js",
   "scripts": {
