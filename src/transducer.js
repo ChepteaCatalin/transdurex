@@ -6,14 +6,7 @@
  * @returns {function(function(A, R): A): function(A, T): A}  the resulting reducer function
  */
 export function mapReducer(mappingFn) {
-  /**
-   * Combines the accumulated value with the mapped value using the combine function
-   *
-   * @template A, T, R
-   * @param {function(A, R): A} combineFn the combiner function
-   * @returns {function(A, T): A} the reducer function
-   */
-  return (combineFn) =>
+  return combineFn =>
     function reducer(acc, curr) {
       return combineFn(acc, mappingFn(curr));
     };
@@ -27,14 +20,7 @@ export function mapReducer(mappingFn) {
  * @returns {function(function(A, T): A): function(A, T): A} the resulting reducer function
  */
 export function filterReducer(predicateFn) {
-  /**
-   * Combines the accumulated value with the current value if the predicate function returns true
-   *
-   * @template A, T
-   * @param {function(A, T): A} combineFn the combiner function
-   * @returns {function(A, T): A} the reducer function
-   */
-  return (combineFn) =>
+  return combineFn =>
     function reducer(acc, curr) {
       if (predicateFn(curr)) return combineFn(acc, curr);
       return acc;
@@ -49,12 +35,6 @@ export function filterReducer(predicateFn) {
  * @returns {function(...T[]): T[]} - the resulting transducer function
  */
 export function transducer(...fns) {
-  /**
-   * Pipes the given reducer functions into a single transducer
-   *
-   * @param {...T} args the arguments to pass through the transducer
-   * @returns {T[]} the transformed output
-   */
   return fns.reduce(
     (pipe, fn) =>
       (...args) =>

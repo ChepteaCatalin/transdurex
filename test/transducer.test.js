@@ -1,15 +1,15 @@
-import { transducer } from "../src/transducer";
+import {transducer} from '../src/transducer';
 
-var square = (num) => num * num;
+var square = num => num * num;
 
-describe("transducer", () => {
-  test("should return a function", () => {
+describe('transducer', () => {
+  test('should return a function', () => {
     var result = transducer(jest.fn());
 
-    expect(typeof result).toBe("function");
+    expect(typeof result).toBe('function');
   });
 
-  test("should work with single function", () => {
+  test('should work with single function', () => {
     var composedFn = transducer(square);
     const initial = 10;
 
@@ -18,13 +18,13 @@ describe("transducer", () => {
     expect(composedFn(initial)).toBe(expectedOutput);
   });
 
-  test("should work with no functions", () => {
+  test('should work with no functions', () => {
     const input = 10;
 
     expect(transducer(input)).toBe(input);
   });
 
-  test("should handle variadic arguments", () => {
+  test('should handle variadic arguments', () => {
     var sum = (...nums) => nums.reduce((total, num) => total + num, 0);
     var composedFn = transducer(sum, square);
     var input = [1, 2, 3, 4];
@@ -34,10 +34,10 @@ describe("transducer", () => {
     expect(composedFn(input)).toBe(output);
   });
 
-  test("should handle complex function compositions", () => {
+  test('should handle complex function compositions', () => {
     var add = (a, b) => a + b;
-    var multiplyBy2 = (num) => num * 2;
-    var subtractBy5 = (num) => num - 5;
+    var multiplyBy2 = num => num * 2;
+    var subtractBy5 = num => num - 5;
     var composedFn = transducer(
       add,
       multiplyBy2,
