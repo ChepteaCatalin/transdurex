@@ -1,6 +1,6 @@
-# transducer
+# transdurex
 
-A library for effortless conversion of map-filter-reduce chains into single pass transducers.
+A simple library for effortless conversion of map-filter-reduce chains into single pass transducers.
 
 A transducer is a higher-order reducer. You can find a brief introduction to transducers [here](https://clojure.org/reference/transducers).
 

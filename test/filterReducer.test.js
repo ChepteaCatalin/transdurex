@@ -1,4 +1,4 @@
-import {filterReducer} from '../src/transducer';
+import {filterReducer} from '../src/transdurex';
 
 describe('filterReducer', () => {
   test('should return a reducer function', () => {

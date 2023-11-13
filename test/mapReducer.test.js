@@ -1,4 +1,4 @@
-import {mapReducer} from '../src/transducer';
+import {mapReducer} from '../src/transdurex';
 
 describe('mapReducer', () => {
   test('should return a reducer function', () => {

@@ -1,4 +1,4 @@
-import {transducer} from '../src/transducer';
+import {transducer} from '../src/transdurex';
 
 var square = num => num * num;
 
