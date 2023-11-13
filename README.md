@@ -50,3 +50,5 @@ var result = [1, 2, 3, 4, 5].reduce(
 - `transducer(...fns)` - combines multiple reducers into a transducer
 
 These functions are available for use in all module definitions.
+
+The npm package is published [here](https://www.npmjs.com/package/transdurex)
