@@ -42,22 +42,22 @@ export function filterReducer(predicateFn) {
 }
 
 /**
- * Composes multiple reducers functions into a single transducer
+ * Creates a transducer by piping multiple reducer functions.
  *
  * @template T
- * @param {...function} fns - the reducers functions to compose
+ * @param {...function} fns - the reducers functions to pipe
  * @returns {function(...T[]): T[]} - the resulting transducer function
  */
 export function transducer(...fns) {
   /**
-   * Composes the given reducers functions into a single transducer
+   * Pipes the given reducer functions into a single transducer
    *
    * @param {...T} args the arguments to pass through the transducer
    * @returns {T[]} the transformed output
    */
   return fns.reduce(
-    (composed, fn) =>
+    (pipe, fn) =>
       (...args) =>
-        composed(fn(...args))
+        pipe(fn(...args))
   );
 }
