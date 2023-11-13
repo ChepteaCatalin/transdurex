@@ -1,16 +1,17 @@
 {
   "name": "transdurex",
-  "version": "1.0.2",
+  "version": "1.2.1",
   "description": "A simple transducer library",
+  "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/transdurex.umd.js",
-  "module": "./dist/transdurex.es.js",
+  "main": "./dist/transdurex.umd.cjs",
+  "module": "./dist/transdurex.js",
   "exports": {
     ".": {
-      "import": "./dist/transdurex.es.js",
-      "require": "./dist/transdurex.umd.js"
+      "import": "./dist/transdurex.js",
+      "require": "./dist/transdurex.umd.cjs"
     }
   },
   "scripts": {

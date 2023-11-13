@@ -5,7 +5,7 @@
  * @param {function(T): R} mappingFn the mapping function to convert
  * @returns {function(function(A, R): A): function(A, T): A}  the resulting reducer function
  */
-export function mapReducer(mappingFn) {
+function mapReducer(mappingFn) {
   return combineFn =>
     function reducer(acc, curr) {
       return combineFn(acc, mappingFn(curr));
@@ -19,7 +19,7 @@ export function mapReducer(mappingFn) {
  * @param {function(T): boolean} predicateFn the predicate function to convert
  * @returns {function(function(A, T): A): function(A, T): A} the resulting reducer function
  */
-export function filterReducer(predicateFn) {
+function filterReducer(predicateFn) {
   return combineFn =>
     function reducer(acc, curr) {
       if (predicateFn(curr)) return combineFn(acc, curr);
@@ -34,10 +34,12 @@ export function filterReducer(predicateFn) {
  * @param {...function} fns - the reducers functions to pipe
  * @returns {function(...T[]): T[]} - the resulting transducer function
  */
-export function transducer(...fns) {
+function transducer(...fns) {
   return fns.reduce(
     (pipe, fn) =>
       (...args) =>
         pipe(fn(...args))
   );
 }
+
+export {mapReducer, filterReducer, transducer};

@@ -1,12 +1,12 @@
-const path = require('path');
-const {defineConfig} = require('vite');
+import {resolve} from 'path';
+import {defineConfig} from 'vite';
 
-module.exports = defineConfig({
+export default defineConfig({
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/transdurex.js'),
+      entry: resolve(__dirname, 'src/transdurex.js'),
       name: 'transdurex',
-      fileName: format => `transdurex.${format}.js`,
+      fileName: 'transdurex',
     },
   },
 });
