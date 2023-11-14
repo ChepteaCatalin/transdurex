@@ -50,6 +50,7 @@ function transducer(...fns) {
  * @param {Function} combinerFn
  * @param {*} initialValue
  * @param {Array} arr
+ * @returns {*} value to which the array is reduced
  */
 function transduce(transducer, combinerFn, initialValue, arr) {
   return arr.reduce(transducer(combinerFn), initialValue);
