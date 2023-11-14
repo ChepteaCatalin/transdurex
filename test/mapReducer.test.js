@@ -13,6 +13,7 @@ describe('mapReducer', () => {
 
     var sum = [1, 2, 3, 4, 5].reduce(mapReducer(incrementer)(sumCombiner), 0);
 
-    expect(sum).toBe(20); //2+3+4+5+6=20
+    // [2, 3, 4, 5, 6] => 2 + 3 + 4 + 5 + 6 = 20
+    expect(sum).toBe(20);
   });
 });

@@ -48,6 +48,7 @@ var result = [1, 2, 3, 4, 5].reduce(
 - `mapReducer(mappingFn)` - creates a reducer from a mapper
 - `filterReducer(predicateFn)` - creates a reducer from a predicate
 - `transducer(...fns)` - combines multiple reducers into a transducer
+- `transduce(transducer, combinerFn, initialValue, arr)` - transduces an array using the provided transducer, combiner function, initial value, and the array
 
 These functions are available for use in all module definitions.
 

@@ -28,7 +28,7 @@ function filterReducer(predicateFn) {
 }
 
 /**
- * Creates a transducer by piping multiple reducer functions.
+ * Creates a transducer by piping multiple reducer functions
  *
  * @template T
  * @param {...function} fns - the reducers functions to pipe
@@ -42,4 +42,17 @@ function transducer(...fns) {
   );
 }
 
-export {mapReducer, filterReducer, transducer};
+/**
+ * Transduces an array using the provided transducer,
+ * combiner function, initial value, and the array
+ *
+ * @param {Function} transducer
+ * @param {Function} combinerFn
+ * @param {*} initialValue
+ * @param {Array} arr
+ */
+function transduce(transducer, combinerFn, initialValue, arr) {
+  return arr.reduce(transducer(combinerFn), initialValue);
+}
+
+export {mapReducer, filterReducer, transducer, transduce};
