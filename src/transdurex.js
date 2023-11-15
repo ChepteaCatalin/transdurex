@@ -1,28 +1,26 @@
 /**
- * Converts a mapping function into a reducer
+ * Transforms a mapping function into a reducer
  *
- * @template T, R
- * @param {function(T): R} mappingFn the mapping function to convert
- * @returns {function(function(A, R): A): function(A, T): A}  the resulting reducer function
+ * @param {Function} mapper the mapping function to convert
+ * @returns {Function} reducer function
  */
-function mapReducer(mappingFn) {
+function mapReducer(mapper) {
   return combineFn =>
     function reducer(acc, curr) {
-      return combineFn(acc, mappingFn(curr));
+      return combineFn(acc, mapper(curr));
     };
 }
 
 /**
- * Converts a predicate function into a reducer
+ * Transforms a predicate into a reducer
  *
- * @template T
- * @param {function(T): boolean} predicateFn the predicate function to convert
- * @returns {function(function(A, T): A): function(A, T): A} the resulting reducer function
+ * @param {Function} predicate the predicate to convert
+ * @returns {Function} reducer function
  */
-function filterReducer(predicateFn) {
+function filterReducer(predicate) {
   return combineFn =>
     function reducer(acc, curr) {
-      if (predicateFn(curr)) return combineFn(acc, curr);
+      if (predicate(curr)) return combineFn(acc, curr);
       return acc;
     };
 }
@@ -30,9 +28,8 @@ function filterReducer(predicateFn) {
 /**
  * Creates a transducer by piping multiple reducer functions
  *
- * @template T
- * @param {...function} fns - the reducers functions to pipe
- * @returns {function(...T[]): T[]} - the resulting transducer function
+ * @param {Function[]} fns the reducers functions to pipe
+ * @returns {Function} transducer function
  */
 function transducer(...fns) {
   return fns.reduce(
@@ -43,17 +40,18 @@ function transducer(...fns) {
 }
 
 /**
- * Transduces an array using the provided transducer,
- * combiner function, initial value, and the array
+ * Transduces an array using the provided transducer, combiner and the initial value
  *
+ * @curried
  * @param {Function} transducer
- * @param {Function} combinerFn
+ * @param {Function} combiner
  * @param {*} initialValue
  * @param {Array} arr
- * @returns {*} value to which the array is reduced
+ * @returns {*} accumulated value
  */
-function transduce(transducer, combinerFn, initialValue, arr) {
-  return arr.reduce(transducer(combinerFn), initialValue);
+function transduce(transducer) {
+  return combiner => initialValue => arr =>
+    arr.reduce(transducer(combiner), initialValue);
 }
 
 export {mapReducer, filterReducer, transducer, transduce};

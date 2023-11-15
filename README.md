@@ -43,12 +43,20 @@ var result = [1, 2, 3, 4, 5].reduce(
 );
 ```
 
-## Functions provided by the library
+You can express the transducing more declaratively by using the `transduce` function:
+
+```javascript
+var result23 = transduce(
+  transducer(mapReducer(add1), filterReducer(isOdd), mapReducer(double))
+)(sum)(0)([1, 2, 3, 4, 5]);
+```
+
+## Functions exported by the library
 
 - `mapReducer(mappingFn)` - creates a reducer from a mapper
 - `filterReducer(predicateFn)` - creates a reducer from a predicate
 - `transducer(...fns)` - combines multiple reducers into a transducer
-- `transduce(transducer, combinerFn, initialValue, arr)` - transduces an array using the provided transducer, combiner function, initial value, and the array
+- `transduce(transducer)(combinerFn)(initialValue)(arr)` - transduces an array using the provided transducer, combiner function, initial value, and the array
 
 These functions are available for use in all module definitions.
 

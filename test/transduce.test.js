@@ -16,10 +16,10 @@ describe('transduce', () => {
       mapReducer(double)
     );
     var sum = (total, v) => total + v;
-    var initialValue = 0;
+    const initialValue = 0;
     var arr = [1, 2, 3, 4, 5];
 
-    var result = transduce(composedReducer, sum, initialValue, arr);
+    var result = transduce(composedReducer)(sum)(initialValue)(arr);
 
     // [2, 3, 4, 5, 6] => [3, 5] => [6, 10] => 6 + 10 = 16
     expect(result).toBe(16);
