@@ -46,7 +46,7 @@ var result = [1, 2, 3, 4, 5].reduce(
 You can express the transducing more declaratively by using the `transduce` function:
 
 ```javascript
-var result23 = transduce(
+var result = transduce(
   transducer(mapReducer(add1), filterReducer(isOdd), mapReducer(double))
 )(sum)(0)([1, 2, 3, 4, 5]);
 ```
