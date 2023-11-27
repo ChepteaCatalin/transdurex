@@ -20,8 +20,7 @@ function mapReducer(mapper) {
 function filterReducer(predicate) {
   return combineFn =>
     function reducer(acc, curr) {
-      if (predicate(curr)) return combineFn(acc, curr);
-      return acc;
+      return predicate(curr) ? combineFn(acc, curr) : acc;
     };
 }
 

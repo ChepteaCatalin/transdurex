@@ -51,7 +51,7 @@ var result = transduce(
 )(sum)(0)([1, 2, 3, 4, 5]);
 ```
 
-## Functions exported by the library
+## Exported functions
 
 - `mapReducer(mappingFn)` - creates a reducer from a mapper
 - `filterReducer(predicateFn)` - creates a reducer from a predicate
