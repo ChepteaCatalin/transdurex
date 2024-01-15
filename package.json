@@ -1,6 +1,6 @@
 {
   "name": "transdurex",
-  "version": "1.4.3",
+  "version": "1.4.6",
   "description": "A simple transducer library",
   "type": "module",
   "files": [
