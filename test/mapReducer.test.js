@@ -1,4 +1,3 @@
-import {describe, test, expect, vi} from 'vitest';
 import {mapReducer} from '../src/transdurex';
 
 describe('mapReducer', () => {

@@ -1,4 +1,3 @@
-import {describe, test, expect, vi} from 'vitest';
 import {filterReducer} from '../src/transdurex';
 
 describe('filterReducer', () => {

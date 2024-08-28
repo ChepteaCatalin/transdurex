@@ -9,4 +9,7 @@ export default defineConfig({
       fileName: 'transdurex',
     },
   },
+  test: {
+    globals: true,
+  },
 });

@@ -1,4 +1,3 @@
-import {describe, test, expect, vi} from 'vitest';
 import {transducer} from '../src/transdurex';
 
 var square = num => num * num;
