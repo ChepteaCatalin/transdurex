@@ -1,19 +1,14 @@
 import {transducer} from '../src/transdurex';
 
-var square = num => num * num;
-
 describe('transducer', () => {
-  test('should return a function', () => {
-    var result = transducer(vi.fn());
-
-    expect(typeof result).toBe('function');
-  });
+  test('should return a function', () =>
+    expect(typeof transducer(vi.fn())).toBe('function'));
 
   test('should work with single function', () => {
-    var composedFn = transducer(square);
+    var composedFn = transducer(Math.sqrt);
     const initial = 10;
 
-    const expectedOutput = square(initial);
+    const expectedOutput = Math.sqrt(initial);
 
     expect(composedFn(initial)).toBe(expectedOutput);
   });
@@ -26,10 +21,10 @@ describe('transducer', () => {
 
   test('should handle variadic arguments', () => {
     var sum = (...nums) => nums.reduce((total, num) => total + num, 0);
-    var composedFn = transducer(sum, square);
+    var composedFn = transducer(sum, Math.sqrt);
     var input = [1, 2, 3, 4];
 
-    var output = square(sum(input));
+    var output = Math.sqrt(sum(input));
 
     expect(composedFn(input)).toBe(output);
   });
@@ -42,13 +37,13 @@ describe('transducer', () => {
       add,
       multiplyBy2,
       subtractBy5,
-      square,
+      Math.sqrt,
       multiplyBy2
     );
     const initial = 10;
 
     const expectedOutput = multiplyBy2(
-      square(subtractBy5(multiplyBy2(add(10))))
+      Math.sqrt(subtractBy5(multiplyBy2(add(10))))
     );
 
     expect(composedFn(initial)).toBe(expectedOutput);

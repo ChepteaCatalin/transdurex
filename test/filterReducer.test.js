@@ -1,11 +1,8 @@
 import {filterReducer} from '../src/transdurex';
 
 describe('filterReducer', () => {
-  test('should return a reducer function', () => {
-    var reducer = filterReducer(vi.fn());
-
-    expect(typeof reducer).toBe('function');
-  });
+  test('should return a reducer function', () =>
+    expect(typeof filterReducer(vi.fn())).toBe('function'));
 
   test('should correctly apply the filtering and combine functions', () => {
     var isEven = x => !(x % 2);
