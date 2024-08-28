@@ -1,8 +1,9 @@
+import {describe, test, expect, vi} from 'vitest';
 import {mapReducer} from '../src/transdurex';
 
 describe('mapReducer', () => {
   test('should return a reducer function', () => {
-    var reducer = mapReducer(jest.fn());
+    var reducer = mapReducer(vi.fn());
 
     expect(typeof reducer).toBe('function');
   });

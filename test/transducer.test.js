@@ -1,10 +1,11 @@
+import {describe, test, expect, vi} from 'vitest';
 import {transducer} from '../src/transdurex';
 
 var square = num => num * num;
 
 describe('transducer', () => {
   test('should return a function', () => {
-    var result = transducer(jest.fn());
+    var result = transducer(vi.fn());
 
     expect(typeof result).toBe('function');
   });

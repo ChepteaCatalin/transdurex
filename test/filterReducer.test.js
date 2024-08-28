@@ -1,8 +1,9 @@
+import {describe, test, expect, vi} from 'vitest';
 import {filterReducer} from '../src/transdurex';
 
 describe('filterReducer', () => {
   test('should return a reducer function', () => {
-    var reducer = filterReducer(jest.fn());
+    var reducer = filterReducer(vi.fn());
 
     expect(typeof reducer).toBe('function');
   });
