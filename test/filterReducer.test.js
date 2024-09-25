@@ -1,10 +1,10 @@
 import {filterReducer} from '../src/transdurex';
 
 describe('filterReducer', () => {
-  test('should return a reducer function', () =>
+  test('returns a reducer function', () =>
     expect(typeof filterReducer(vi.fn())).toBe('function'));
 
-  test('should correctly apply the filtering and combine functions', () => {
+  test('correctly applies the filtering and combine functions', () => {
     var isEven = x => !(x % 2);
     var sumCombiner = (acc, curr) => acc + curr;
 

@@ -1,10 +1,10 @@
 import {transducer} from '../src/transdurex';
 
 describe('transducer', () => {
-  test('should return a function', () =>
+  test('returns a function', () =>
     expect(typeof transducer(vi.fn())).toBe('function'));
 
-  test('should work with single function', () => {
+  test('works with a single function', () => {
     var composedFn = transducer(Math.sqrt);
     const initial = 10;
 
@@ -13,13 +13,13 @@ describe('transducer', () => {
     expect(composedFn(initial)).toBe(expectedOutput);
   });
 
-  test('should work with no functions', () => {
+  test('works with no functions', () => {
     const input = 10;
 
     expect(transducer(input)).toBe(input);
   });
 
-  test('should handle variadic arguments', () => {
+  test('handles variadic arguments', () => {
     var sum = (...nums) => nums.reduce((total, num) => total + num, 0);
     var composedFn = transducer(sum, Math.sqrt);
     var input = [1, 2, 3, 4];
@@ -29,7 +29,7 @@ describe('transducer', () => {
     expect(composedFn(input)).toBe(output);
   });
 
-  test('should handle complex function compositions', () => {
+  test('handles complex function compositions', () => {
     var add = (a, b) => a + b;
     var multiplyBy2 = num => num * 2;
     var subtractBy5 = num => num - 5;

@@ -1,10 +1,10 @@
 import {mapReducer} from '../src/transdurex';
 
 describe('mapReducer', () => {
-  test('should return a reducer function', () =>
+  test('returns a reducer function', () =>
     expect(typeof mapReducer(vi.fn())).toBe('function'));
 
-  test('should correctly apply the mapping and combine functions', () => {
+  test('correctly applies the mapping and combine functions', () => {
     var increment = x => ++x;
     var sumCombiner = (acc, curr) => acc + curr;
 

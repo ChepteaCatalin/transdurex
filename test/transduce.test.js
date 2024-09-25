@@ -6,7 +6,7 @@ import {
 } from '../src/transdurex';
 
 describe('transduce', () => {
-  test('should transduce a list using the provided transducer and combiner function', () => {
+  test('transduces a list using the provided transducer and combiner functions', () => {
     var add1 = v => ++v;
     var isOdd = v => !!(v % 2);
     var double = v => v * 2;
