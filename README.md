@@ -30,7 +30,7 @@ var result = [1, 2, 3, 4, 5].map(add1).filter(isOdd).map(double).reduce(sum, 0);
 
 This works fine. However, these transformations occur across multiple intermediate collections, which must be created, transformed, and subsequently garbage-collected once they are no longer needed.
 
-A transducer enables you to perform these transformations in a single pass without compromising the clarity of having those four distinct transformation functions.
+A transducer enables you to perform these transformations in a single-pass without compromising the clarity of having those four distinct transformation functions.
 
 Reducers have incompatible shapes with predicates, mappers, and other reducers, which means they cannot be directly composed together. To address this, the library provides utilities for converting mappers and predicates into reducers, allowing for seamless composition.
 
