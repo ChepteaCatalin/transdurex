@@ -53,7 +53,7 @@ var result = transduce(
 
 ## Exported functions
 
-- `mapReducer(mappingFn)` - creates a reducer from a mapper
-- `filterReducer(predicateFn)` - creates a reducer from a predicate
-- `transducer(...fns)` - combines multiple reducers into a transducer
-- `transduce(transducer)(combinerFn)(initialValue)(arr)` - transduces an array using the provided transducer, combiner function, initial value, and the array
+- `mapReducer(mappingFn)` - creates a reducer from a mapper;
+- `filterReducer(predicateFn)` - creates a reducer from a predicate;
+- `transducer(...fns)` - combines multiple reducers into a transducer;
+- `transduce(transducer)(combinerFn)(initialValue)(arr)` - transduces an array using the provided transducer, combiner function, initial value, and the array.
