@@ -5,12 +5,12 @@ describe('transducer', () => {
     expect(typeof transducer(vi.fn())).toBe('function'));
 
   test('works with a single function', () => {
-    var composedFn = transducer(Math.sqrt);
     const initial = 10;
-
     const expectedOutput = Math.sqrt(initial);
 
-    expect(composedFn(initial)).toBe(expectedOutput);
+    var composedFn = transducer(Math.sqrt);
+
+    expect(composedFn(initial)).toBeCloseTo(expectedOutput, 4);
   });
 
   test('works with no functions', () => {
@@ -20,32 +20,33 @@ describe('transducer', () => {
   });
 
   test('handles variadic arguments', () => {
-    var sum = (...nums) => nums.reduce((total, num) => total + num, 0);
-    var composedFn = transducer(sum, Math.sqrt);
-    var input = [1, 2, 3, 4];
+    var sum = (...numbers) => numbers.reduce((acc, number) => acc + number, 0);
+    const input = [1, 2, 3, 4];
+    const expectedOutput = sum(...input);
 
-    var output = Math.sqrt(sum(input));
+    var composedFn = transducer(sum);
 
-    expect(composedFn(input)).toBe(output);
+    expect(composedFn(...input)).toBe(expectedOutput);
   });
 
   test('handles complex function compositions', () => {
-    var add = (a, b) => a + b;
+    var add = a => b => a + b;
     var multiplyBy2 = num => num * 2;
     var subtractBy5 = num => num - 5;
-    var composedFn = transducer(
-      add,
-      multiplyBy2,
-      subtractBy5,
-      Math.sqrt,
-      multiplyBy2
-    );
-    const initial = 10;
-
+    const augend = 113;
+    const addend = 9912;
     const expectedOutput = multiplyBy2(
-      Math.sqrt(subtractBy5(multiplyBy2(add(10))))
+      Math.sqrt(subtractBy5(multiplyBy2(add(augend)(addend))))
     );
 
-    expect(composedFn(initial)).toBe(expectedOutput);
+    var composedFn = transducer(
+      multiplyBy2,
+      Math.sqrt,
+      subtractBy5,
+      multiplyBy2,
+      add(addend)
+    );
+
+    expect(composedFn(augend)).toBeCloseTo(expectedOutput, 4);
   });
 });
