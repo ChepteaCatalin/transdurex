@@ -1,6 +1,6 @@
 # transdurex
 
-A simple library for effortless conversion of map-filter-reduce chains into single pass transducers.
+A simple library for effortless conversion of map-filter-reduce chains into single-pass transducers.
 
 A transducer is a higher-order reducer. You can find a brief introduction to transducers [here](https://clojure.org/reference/transducers).
 
@@ -28,11 +28,11 @@ function sum(total, v) {
 var result = [1, 2, 3, 4, 5].map(add1).filter(isOdd).map(double).reduce(sum, 0);
 ```
 
-This works fine. However, these transformations occur across multiple intermediate collections, which need to be created, transformed, and subsequently garbage-collected once they are no longer needed.
+This works fine. However, these transformations occur across multiple intermediate collections, which must be created, transformed, and subsequently garbage-collected once they are no longer needed.
 
 A transducer enables you to perform these transformations in a single pass without compromising the clarity of having those four distinct transformation functions.
 
-Reducers have incompatible shape with predicates, mappers and as well as well as with other reducers. This implies that reducers cannot be composed with mappers, predicates, or other reducers. That's why this library offers utilities for converting mappers and predicates into reducers.
+Reducers have incompatible shapes with predicates, mappers, and other reducers, which means they cannot be directly composed together. To address this, the library provides utilities for converting mappers and predicates into reducers, allowing for seamless composition.
 
 After converting predicates and mappers into reducers, the above code can be rewritten as follows:
 
@@ -43,7 +43,7 @@ var result = [1, 2, 3, 4, 5].reduce(
 );
 ```
 
-You can express the transducing more declaratively by using the `transduce` function:
+You can express transduction in a more composable way by using the `transduce` function:
 
 ```javascript
 var result = transduce(
@@ -57,7 +57,3 @@ var result = transduce(
 - `filterReducer(predicateFn)` - creates a reducer from a predicate
 - `transducer(...fns)` - combines multiple reducers into a transducer
 - `transduce(transducer)(combinerFn)(initialValue)(arr)` - transduces an array using the provided transducer, combiner function, initial value, and the array
-
-These functions are available for use in all module definitions.
-
-The npm package is published [here](https://www.npmjs.com/package/transdurex).
