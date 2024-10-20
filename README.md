@@ -32,9 +32,7 @@ This works fine. However, these transformations occur across multiple intermedia
 
 A transducer enables you to perform these transformations in a single-pass without compromising the clarity of having those four distinct transformation functions.
 
-Reducers have incompatible shapes with predicates, mappers, and other reducers, which means they cannot be directly composed together. To address this, the library provides utilities for converting mappers and predicates into reducers, allowing for seamless composition.
-
-After converting predicates and mappers into reducers, the above code can be rewritten as follows:
+Reducers have incompatible shapes with predicates, mappers, and other reducers, which means they cannot be directly composed together. To address this, the library provides utilities for converting mappers and predicates into reducers, allowing for seamless composition:
 
 ```javascript
 var result = [1, 2, 3, 4, 5].reduce(
